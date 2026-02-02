@@ -1,0 +1,503 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px; /* Add slight padding for alignment */
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.input-section {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.year-inputs {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.year-inputs label {
+    font-weight: bold;
+}
+
+.year-inputs input {
+    padding: 8px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    width: 100px;
+}
+
+#generate-years {
+    background: #3498db;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.year-data {
+    background: #f8f9fa;
+    /* Remove padding here, move to header/body */
+    padding: 0; 
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+    overflow: hidden; /* Ensure rounded corners work */
+    transition: all 0.3s ease;
+}
+
+/* New: Clickable Header for Year Section */
+.year-header {
+    background: #e9ecef;
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid transparent;
+    transition: background 0.2s;
+}
+
+.year-header:hover {
+    background: #dee2e6;
+}
+
+.year-header h3 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.1em;
+}
+
+.year-toggle-icon {
+    font-weight: bold;
+    color: #555;
+    transition: transform 0.3s;
+}
+
+/* New: Content Body Wrapper */
+.year-body {
+    padding: 20px;
+    display: block; /* Default visible */
+    border-top: 1px solid #e9ecef;
+}
+
+/* Collapsed State for specific year */
+.year-data.collapsed-year .year-body {
+    display: none;
+}
+
+.year-data.collapsed-year .year-header {
+    background: #fff; /* Make it look lighter when collapsed */
+    border-bottom: none;
+}
+
+.year-data.collapsed-year .year-toggle-icon {
+    transform: rotate(-90deg); /* Visual cue */
+}
+
+.suppliers-container {
+    margin-bottom: 15px;
+}
+
+.supplier-item {
+    background: white;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.transport-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+    align-items: center;
+}
+
+.transport-row label {
+    width: 100px;
+    font-weight: bold;
+}
+
+.transport-row input {
+    flex: 1;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.transport-modes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.transport-modes div {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.transport-modes label {
+    width: 60px;
+    font-weight: bold;
+}
+
+.add-supplier-btn, #calculate-btn {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+    display: block;
+    margin: 15px auto;
+}
+
+.add-supplier-btn:hover, #calculate-btn:hover {
+    transform: translateY(-2px);
+}
+
+.remove-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.result-section {
+    background: white;
+    padding: 25px;
+    margin-top: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    width: 100%; /* Ensure it fills container */
+}
+
+.metrics-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.card p {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.charts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 25px;
+}
+
+.chart-container {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+}
+
+.chart-container h3 {
+    margin-bottom: 15px;
+    color: #34495e;
+    text-align: center;
+}
+
+/* New Config Section Styles */
+.config-section summary {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #2c3e50;
+    padding: 10px;
+    background-color: #f1f3f5;
+    border-radius: 8px;
+    list-style: none; /* Hide default arrow */
+}
+
+.config-section summary::-webkit-details-marker {
+    display: none;
+}
+
+.config-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 15px;
+    padding: 10px;
+}
+
+.config-group {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.config-group h3 {
+    margin-bottom: 10px;
+    font-size: 1em;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.input-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.input-grid label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9em;
+}
+
+/* Category Row Styles */
+.category-row {
+    display: grid;
+    /* 调整列宽：增加一列给 Sales Rate */
+    /* Name | Prop | Div | Sales | Factor | Type | Btn */
+    grid-template-columns: 2fr 0.8fr 0.8fr 0.8fr 0.8fr 1.1fr 40px; 
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 8px;
+    padding: 8px;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+    font-size: 0.9rem;
+}
+
+.category-header {
+    font-weight: bold;
+    background: #e9ecef;
+    border: none;
+}
+
+.category-row input {
+    padding: 5px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.secondary-btn {
+    background: #95a5a6;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.secondary-btn:hover { background: #7f8c8d; }
+
+/* New Styles for Per-Year Config Override */
+.local-config-panel {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #fff3cd; /* Light yellow to indicate "Be Careful" or "Override" */
+    border: 1px dashed #ffa000;
+    border-radius: 8px;
+    font-size: 0.9em;
+}
+
+.local-config-panel h4 {
+    margin-bottom: 10px;
+    color: #856404;
+    display: flex;
+    justify-content: space-between;
+}
+
+.override-toggle-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    color: #d35400;
+    cursor: pointer;
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.override-toggle-label:hover {
+    background-color: #fcece4;
+    border-color: #d35400;
+}
+
+/* Input Container Collapsed State */
+#years-container.collapsed {
+    display: none;
+}
+
+/* Control Bar for Edit/Toggle */
+.edit-control-bar {
+    background: #e3f2fd;
+    border: 1px solid #90caf9;
+    color: #1565c0;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    display: none; /* Hidden by default */
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background 0.3s;
+}
+
+.edit-control-bar:hover {
+    background: #bbdefb;
+}
+
+/* Stack Visualization Styles */
+.stack-vis-wrapper {
+    width: 100%;
+    height: 300px;
+    background: #fdfdfd;
+    border-bottom: 3px solid #7f8c8d; /* Ground line */
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse; /* Stack from bottom */
+    align-items: center;
+    padding-bottom: 2px;
+    overflow: hidden;
+}
+
+.stack-chip {
+    width: 60%;
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    border: 1px solid #1e8449;
+    border-radius: 4px;
+    margin: 1px 0;
+    color: white;
+    font-size: 0.75em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    opacity: 0; /* Hidden initially */
+    transform: translateY(-50px); /* Start slightly above */
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy effect */
+    position: relative;
+}
+
+/* Tooltip on hover */
+.stack-chip:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 105%;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    z-index: 10;
+    font-size: 1em;
+}
+
+.stack-chip.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stack-label-total {
+    position: absolute;
+    top: 10px;
+    right: 15px; /* 稍微往里一点 */
+    font-weight: bold;
+    color: #1e8449; /* 加深颜色增加对比度 */
+    font-size: 1.1em;
+    
+    /* NEW: Ensure visibility over chips */
+    z-index: 100; 
+    background: rgba(255, 255, 255, 0.9); /* 半透明白底 */
+    padding: 5px 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border: 1px solid #e9ecef;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .category-row {
+        grid-template-columns: 1fr 1fr 1fr; /* 三列布局 */
+        gap: 5px;
+    }
+    .category-row .cat-name {
+        grid-column: 1 / -1; /* 名称仍然占满一行 */
+    }
+    .category-row .remove-btn {
+        grid-column: 1 / -1; /* 按钮也占满一行或者根据需要调整 */
+    }
+    
+    .charts {
+        grid-template-columns: 1fr;
+    }
+    
+    .year-inputs {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
