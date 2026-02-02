@@ -2,6 +2,9 @@
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![Status](https://img.shields.io/badge/status-stable-success)
 
+<!-- 1. 这里插入你的静态全景图 -->
+![Dashboard Overview](assets/dashboard.png)
+
 [English](#english) | [中文](#chinese)
 
 ---
@@ -26,8 +29,13 @@ It allows users to simulate multi-year scenarios, customize emission factors, ma
     *   Calculates **Net Reduction**.
 4.  **Rich Visualization**:
     *   **Line/Area Charts**: Trends over time.
-    *   **Dynamic Stack Animation**: Visualizes the accumulation of saved carbon (gamified UI).
     *   **Sales Volume Analysis**: Tracks business growth vs. environmental impact.
+    *   **Dynamic Stack Animation**: Visualizes the accumulation of saved carbon (gamified UI).
+    
+    <!-- 2. 这里插入你的堆叠动画GIF -->
+    > *Dynamic Stack Animation Preview:*
+    > ![Stack Animation](assets/stack_animation.gif)
+
 5.  **Data Management**: Supports importing/exporting scenarios via JSON files.
 
 ### 🚀 How to Use
@@ -64,6 +72,7 @@ Carbon cost incurred by the new supply chain process.
 *   `calculator.js`: Core mathematical logic and formulas.
 *   `visualization.js`: DOM manipulation, Chart.js integration, and interactivity logic.
 *   `default_data.js`: Default constants and configuration settings.
+*   `assets/`: Images and resources for documentation.
 
 ---
 
@@ -87,8 +96,13 @@ Carbon cost incurred by the new supply chain process.
     *   得出 **净减排量**。
 4.  **丰富的数据可视化**：
     *   **折线/面积图**：展示随时间变化的减排趋势。
-    *   **动态堆叠动画 (Stack Animation)**：生动展示逐年累积的减碳成果。
     *   **销量分析图**：对比业务规模（销量）与环境影响。
+    *   **动态堆叠动画 (Stack Animation)**：生动展示逐年累积的减碳成果。
+
+    <!-- 2. 这里插入你的堆叠动画GIF -->
+    > *积木堆叠动画效果预览:*
+    > ![Stack Animation](assets/stack_animation.gif)
+
 5.  **数据管理**：支持一键导出/导入 JSON 配置文件，方便保存和分享模型参数。
 
 ### 🚀 使用方法
@@ -125,5 +139,6 @@ $$ E_{avoided} = \sum (\text{总重量} \times \text{类别占比} \times \text{
 *   `calculator.js`: 后台计算逻辑，包含所有数学公式。
 *   `visualization.js`: 页面交互逻辑、DOM 操作、Chart.js 图表配置及数据导入导出功能。
 *   `default_data.js`: 默认的模拟数据和常量配置。
+*   `assets/`: 存放文档说明所需的图片资源。
 
 ---
